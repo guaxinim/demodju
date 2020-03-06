@@ -14,5 +14,6 @@ public interface RestClientSend {
 
     @POST
     @Path("/receive")
+    @Produces("application/x-www-form-urlencoded; charset=utf-8")
     String sendData(String data);
 }
