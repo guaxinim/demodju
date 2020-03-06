@@ -1,0 +1,113 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+
+    <title>Upload</title>
+      
+    <!-- <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script>  -->
+</head> 
+  
+<body> 
+    
+    <section>
+        <div class="container p-5">
+          <!-- For demo purpose -->
+          <div class="row mb-5 text-center text-white">
+            <div class="col-lg-10 mx-auto">
+              <h1 class="display-4">File upload button </h1>
+              <p class="lead">Build a simple file upload button using Bootstrap 4.</p>
+            </div>
+          </div>
+          <!-- End -->
+      
+      
+          <div class="row">
+            <div class="col-lg-5 mx-auto">
+              <div class="p-5 bg-white shadow rounded-lg"><img src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt="" width="200" class="d-block mx-auto mb-4 rounded-pill">
+      
+                <!-- Default bootstrap file upload-->
+      
+                <h6 class="text-center mb-4 text-muted">
+                  You can use default Bootstrap file upload
+                </h6>
+                <form method="post" action="" enctype="multipart/form-data"
+                id="myform"> 
+                <div class="custom-file overflow-hidden rounded-pill mb-5">
+                  <input id="customFile" type="file" class="custom-file-input rounded-pill">
+                  <label for="customFile" class="custom-file-label rounded-pill">Choose file</label>
+                </div>
+                <!-- End -->
+                
+                <!-- Custom bootstrap upload file-->
+                    <label id="but_upload" for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow"><i class="fa fa-upload mr-2"></i>Enviar Arquivo
+                    </label>
+                <!-- End -->
+            </form> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <!-- <div align="center"> 
+        <form method="post" action="" enctype="multipart/form-data"
+                id="myform"> 
+   
+            <div > 
+                <input type="file" id="file" name="file" /> 
+                <input type="button" class="button" value="Upload"
+                        id="but_upload"> 
+            </div> 
+        </form> 
+    </div>      -->
+       
+    <script type="text/javascript"> 
+        $(document).ready(function() { 
+            $("#but_upload").click(function() { 
+                var fd = new FormData(); 
+                var files = $('#customFile')[0].files[0]; 
+                fd.append('file', files); 
+       
+                $.ajax({ 
+                    url: '/parse/text', 
+                    type: 'post', 
+                    data: fd, 
+                    contentType: "application/pdf", 
+                    processData: false, 
+                    success: function(response){ 
+                        // console.log("resp =",response)
+                        if(response != 0){ 
+                           alert('Arquivo enviado com sucesso!'); 
+                        } 
+                        else{ 
+                            alert('Erro ao enviar o arquivo'); 
+                        } 
+                    }, 
+                }); 
+            }); 
+        }); 
+    </script> 
+</body> 
+  
+</html> 

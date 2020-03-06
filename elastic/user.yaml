@@ -1,0 +1,8 @@
+kind: User
+apiVersion: user.openshift.io/v1
+metadata:
+  name: kibana
+identities:
+  - 'htpasswd_provider:kibana'
+groups: null
+
